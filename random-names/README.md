@@ -21,3 +21,8 @@ $> docker run -d --name random-names -p 8080:8080 marcal.perapoch/random-names
 ```docker
 $> docker ps
 ```
+
+5) Call example
+```bash
+$> curl -0 http://localhost:8080/random_names/generate/10
+```
