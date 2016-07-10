@@ -1,0 +1,7 @@
+version: '2'
+
+services:
+    random-names:
+        build: random-names
+        image: marcal.perapoch/random-names
+        ports: ["8080:8080"]
