@@ -1,6 +1,6 @@
-package com.mperapoch.randomnames.domain;
+package com.mperapoch.quotes.domain;
 
-import com.mperapoch.randomnames.services.ServiceDiscoverer;
+import com.mperapoch.quotes.services.ServiceDiscoverer;
 
 /**
  * Created by marcalperapochamado on 07/08/16.

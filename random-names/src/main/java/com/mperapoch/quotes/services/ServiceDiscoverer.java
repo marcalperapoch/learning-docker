@@ -1,11 +1,11 @@
-package com.mperapoch.randomnames.services;
+package com.mperapoch.quotes.services;
 
 /**
  * Created by marcalperapochamado on 07/08/16.
  */
 public interface ServiceDiscoverer {
 
-    void execute(long timeOut);
+    boolean isRepositoryAvailable(long timeOut);
 
     void notifyTimeOutReached();
 }
