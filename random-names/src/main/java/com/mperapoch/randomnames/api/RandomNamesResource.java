@@ -1,4 +1,4 @@
-package com.mperapoch.randomnames;
+package com.mperapoch.randomnames.api;
 
 import net.codestory.http.annotations.Get;
 

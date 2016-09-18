@@ -5,3 +5,10 @@ services:
         build: random-names
         image: marcal.perapoch/random-names
         ports: ["8080:8080"]
+        links:
+          - mysqldb:random-names-db
+
+    mysqldb:
+        build: mysql-docker
+        image: marcal.perapoch/mysql-docker
+        ports: ["3307:3306"]

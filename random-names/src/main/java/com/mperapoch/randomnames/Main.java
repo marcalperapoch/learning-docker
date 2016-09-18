@@ -1,5 +1,6 @@
 package com.mperapoch.randomnames;
 
+import com.mperapoch.randomnames.api.RandomNamesResource;
 import net.codestory.http.WebServer;
 
 /**
