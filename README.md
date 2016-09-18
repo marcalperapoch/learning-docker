@@ -31,24 +31,6 @@ Example of my **development configuration**:
 ```bash
 export QUOTES_DB_HOST=localhost:3306
 export QUOTES_DB_NAME=quotes-db
-export QUOTES_DB_USER=admin
+export QUOTES_DB_USER=quotesuser
 export QUOTES_DB_PASSWORD=quotes2016
 ```
-
-#### Api calls
-
-You can perform the following calls to the **quotes-api**:
-
-* A set of quotes
-
-```bash
-curl "http://localhost:8080/quotes/?offset=10&limit=2"
-```
-Which will return a set of ```limit``` quotes starting from the ```offset``` position.
-
-* A concreate quote
-
-```bash
-curl "http://localhost:8080/quotes/1"
-```
-That will return you a specific quote by id.

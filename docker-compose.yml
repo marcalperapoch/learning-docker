@@ -1,14 +1,15 @@
 version: '2'
-
 services:
-    random-names:
-        build: random-names
-        image: marcal.perapoch/random-names
-        ports: ["8080:8080"]
-        links:
-          - mysqldb:random-names-db
-
-    mysqldb:
-        build: mysql-docker
-        image: marcal.perapoch/mysql-docker
-        ports: ["3307:3306"]
+  db-dev:
+    build: quotes-db-mysql-docker
+    image: marcal.perapoch/quotes-db-mysql-docker
+    ports: ["3307:3306"]
+  api:
+    build: quotes-api
+    image: marcal.perapoch/quotes-api
+    ports: ["8080:8080"]
+    environment:
+    - QUOTES_DB_HOST=db-dev:3306
+    - QUOTES_DB_NAME=quotes-db
+    - QUOTES_DB_USER=quotesuser
+    - QUOTES_DB_PASSWORD=quotes2016

@@ -1,28 +1,19 @@
-#Playing with Docker & Java
+# quotes-api
 
-1) Generate the java JAR file
-```maven
-$> cd random-names/
-$> mvn clean package
-```
+The aim of this project is to build a **Java 8 REST API** using [fluent-http](https://github.com/CodeStory/fluent-http) that connects to a MySQL database in order to retrieve and serve some quotes.
 
-2) Build the Docker Image
+You can perform the following calls to the **quotes-api**:
 
-```docker
-$> docker build -t marcal.perapoch/random-names .
-```
+ * Getting a set of quotes
 
-3) Run a Docker container on port 8080
-```docker
-$> docker run -d --name random-names -p 8080:8080 marcal.perapoch/random-names
-```
+ ```bash
+ curl "http://localhost:8080/quotes/?offset=10&limit=2"
+ ```
+ Which will return a set of ```limit``` quotes starting from the ```offset``` position.
 
-4) Verify that the container is running
-```docker
-$> docker ps
-```
+ * Getting a concrete quote
 
-5) Call example
-```bash
-$> curl -0 http://localhost:8080/random_names/generate/10
-```
+ ```bash
+ curl "http://localhost:8080/quotes/1"
+ ```
+ That will return you a specific quote by id.
