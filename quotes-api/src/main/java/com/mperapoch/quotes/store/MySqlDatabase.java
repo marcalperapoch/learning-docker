@@ -13,7 +13,7 @@ import java.util.Set;
  */
 public class MySqlDatabase implements Repository {
 
-    private static final String CONNECTION_URL = "jdbc:mysql://%s/%s";
+    private static final String CONNECTION_URL = "jdbc:mysql://%s/%s?useUnicode=true&characterEncoding=utf-8&useSSL=false";
     private static final String HOST = "QUOTES_DB_HOST";
     private static final String DATABASE = "QUOTES_DB_NAME";
     private static final String USER = "QUOTES_DB_USER";

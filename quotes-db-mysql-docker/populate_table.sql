@@ -11,5 +11,7 @@ LOCK TABLES quotes WRITE;
 INSERT INTO `quotes` (`quote_id`, `author`, `text`, `votes`)
 VALUES
 	(1, 'Marçal Perapoch', 'Example of a quote', 0),
-  (2, 'Marçal Perapoch', 'Example of a second quote', 5);
+  (2, 'Stefan Deser', 'Servus team', 10),
+  (3, 'Marçal Perapoch', 'Example of a second quote', 5);
+COMMIT;
 UNLOCK TABLES;

@@ -1,4 +1,4 @@
-package com.mperapoch.quotes.domain;
+package com.mperapoch.quotes.services;
 
 import com.mperapoch.quotes.services.ServiceDiscoverer;
 

@@ -1,7 +1,7 @@
-package com.mperapoch.quotes.domain;
+package com.mperapoch.quotes.services;
 
-import com.mperapoch.quotes.services.Repository;
-import com.mperapoch.quotes.services.ServiceDiscoverer;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -14,7 +14,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
  */
 public class RepositoryDiscoverer implements ServiceDiscoverer {
 
-    private final static int SLEEP_INCREMENT = 100;
+    private static final Logger LOGGER = LogManager.getLogger(RepositoryDiscoverer.class);
+    private final static int SLEEP_INCREMENT = 500;
 
     private final Repository repository;
     private final ScheduledExecutorService scheduler;
@@ -35,7 +36,9 @@ public class RepositoryDiscoverer implements ServiceDiscoverer {
         int delay = 1;
         while(!timeOutReached.get() && !isRepositoryAvailable) {
             isRepositoryAvailable = repository.isAvailable();
-            silentSleep(delay * SLEEP_INCREMENT);
+            final long timeToWait = delay++ * SLEEP_INCREMENT;
+            LOGGER.info(String.format("%s is going to sleep %d ms before trying again...", this.getClass().getSimpleName(), timeToWait));
+            silentSleep(timeToWait);
         }
         closePendingTasks();
         return isRepositoryAvailable;
