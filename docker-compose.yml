@@ -4,6 +4,7 @@ services:
     build: quotes-db-mysql-docker
     image: marcal.perapoch/quotes-db-mysql-docker
     ports: ["3307:3306"]
+
   api:
     build: quotes-api
     image: marcal.perapoch/quotes-api
@@ -13,3 +14,12 @@ services:
     - QUOTES_DB_NAME=quotes-db
     - QUOTES_DB_USER=quotesuser
     - QUOTES_DB_PASSWORD=quotes2016
+
+  grafana-graphite:
+    build: grafana-graphite
+    image: marcal.perapoch/grafana_graphite
+    ports:
+      - '80:80'
+      - '81:81'
+      - '2003:2003'
+      - '2004:2004'
