@@ -1,7 +1,8 @@
 package com.mperapoch.quotes;
 
 import com.mperapoch.quotes.api.QuotesResource;
-import com.mperapoch.quotes.services.RepositoryDiscoverer;
+import com.mperapoch.quotes.services.MetricsToolkit;
+import com.mperapoch.quotes.services.impl.RepositoryDiscoverer;
 import com.mperapoch.quotes.services.Repository;
 import com.mperapoch.quotes.services.ServiceDiscoverer;
 import com.mperapoch.quotes.store.MySqlDatabase;
@@ -30,9 +31,10 @@ public class Main {
     }
 
     private static void deployApp(Repository repository) {
+        MetricsToolkit.getInstance().start();
         new WebServer().configure(routes -> routes
                 .get("/", "Quotes API")
-                .add("quotes", new QuotesResource(repository))
+                .add("quotes", new QuotesResource(repository, MetricsToolkit.getInstance()))
         ).start();
     }
 

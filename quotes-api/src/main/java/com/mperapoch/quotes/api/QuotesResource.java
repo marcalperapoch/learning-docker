@@ -1,6 +1,7 @@
 package com.mperapoch.quotes.api;
 
 import com.mperapoch.quotes.model.Quote;
+import com.mperapoch.quotes.services.MetricsToolkit;
 import com.mperapoch.quotes.services.Repository;
 import com.mperapoch.quotes.services.RepositoryException;
 import net.codestory.http.annotations.Get;
@@ -13,9 +14,11 @@ import java.util.*;
 public class QuotesResource {
 
     private final Repository repository;
+    private final MetricsToolkit metricsToolkit;
 
-    public QuotesResource(Repository repository) {
+    public QuotesResource(Repository repository, MetricsToolkit metricsToolkit) {
         this.repository = repository;
+        this.metricsToolkit = metricsToolkit;
     }
 
     @Get("/:quoteId")
@@ -30,6 +33,7 @@ public class QuotesResource {
     @Get("/?offset=:offset&limit=:limit")
     public Set<Quote> getQuotes(int offset, int limit) {
         try {
+            metricsToolkit.getCounter("quotes").inc();
             return repository.loadQuotes(offset, limit);
         } catch (RepositoryException e) {
             throw new ApiException(e.getMessage());

@@ -1,7 +1,5 @@
 package com.mperapoch.quotes.services;
 
-import com.mperapoch.quotes.services.ServiceDiscoverer;
-
 /**
  * Created by marcalperapochamado on 07/08/16.
  */

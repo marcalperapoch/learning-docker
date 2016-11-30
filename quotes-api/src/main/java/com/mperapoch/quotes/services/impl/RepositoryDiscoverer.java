@@ -1,5 +1,8 @@
-package com.mperapoch.quotes.services;
+package com.mperapoch.quotes.services.impl;
 
+import com.mperapoch.quotes.services.Repository;
+import com.mperapoch.quotes.services.ServiceDiscoverer;
+import com.mperapoch.quotes.services.TimeOutKiller;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
